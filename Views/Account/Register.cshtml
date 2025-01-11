@@ -1,0 +1,41 @@
+@model RegisterViewModel
+
+<h2>Register</h2>
+
+<form method="post">
+    <div>
+        <label for="Email">Email</label>
+        <input type="email" id="Email" name="Email" asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label for="Password">Password</label>
+        <input type="password" id="Password" name="Password" asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <div>
+        <label for="ConfirmPassword">Confirm Password</label>
+        <input type="password" id="ConfirmPassword" name="ConfirmPassword" asp-for="ConfirmPassword" />
+        <span asp-validation-for="ConfirmPassword"></span>
+    </div>
+
+   <div>
+        <label for="Role">Role</label>
+        <select asp-items="@Model.SelectRole" id="Role" name="Role" asp-for="Role"></select>
+        <span asp-validation-for="Role"></span>
+    </div>
+
+    <div>
+        <label>
+            <input type="checkbox" asp-for="RememberMe" />
+            Remember me?
+        </label>
+    </div>
+
+    <div>
+        <button type="submit">Register</button>
+    </div>
+
+</form>

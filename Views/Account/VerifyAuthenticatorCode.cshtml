@@ -1,0 +1,10 @@
+@model EnableAuthenticatorViewModel
+
+<h1>Verify Authenticator Code</h1>
+<form asp-action="VerifyAuthenticatorCode" method="post">
+    <div class="form-group">
+        <label for="code">Enter Code</label>
+        <input type="text" id="code" name="code" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Verify</button>
+</form>

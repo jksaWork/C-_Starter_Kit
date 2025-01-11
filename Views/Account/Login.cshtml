@@ -1,0 +1,35 @@
+@model LoginViewModel   
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> signInMannger
+
+<h2>Login</h2>
+
+<form method="post">
+    <div>
+        <label for="Email">Email</label>
+        <input type="email" id="Email" name="Email" asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label for="Password">Password</label>
+        <input type="password" id="Password" name="Password" asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <div>
+        <label>
+            <input type="checkbox" asp-for="RememberMe" />
+            Remember me?
+        </label>
+    </div>
+
+ <div>
+         <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ForgetPassword">Remember Password</a>
+    </div>
+    <div>
+        <button type="submit">Login</button>
+    </div>  
+
+</form>

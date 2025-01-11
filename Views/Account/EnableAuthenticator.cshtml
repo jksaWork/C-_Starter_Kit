@@ -1,0 +1,33 @@
+@model EnableAuthenticatorViewModel
+
+<h1>Enable Two-Factor Authentication</h1>
+<p>Scan the QR code below using your authenticator app (e.g., Google Authenticator, Authy):</p>
+
+<canvas id="qrcode"></canvas>
+
+<p>Or enter this key manually: <strong>@Model.SharedKey</strong></p>
+
+<form asp-action="VerifyAuthenticatorCode" method="post">
+    <div class="form-group">
+        <label for="code">Verification Code</label>
+        <input type="text" id="code" name="code" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Verify</button>
+</form>
+@* <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> *@
+<script>
+    // JavaScript for QR Code Generation
+    const qrCodeData = "@Model.AuthenticatorUri";
+    const qrCodeContainer = document.getElementById('qrcode');
+
+    QRCode.toCanvas(qrCodeContainer, qrCodeData, {
+        width: 200, // Adjust the size of the QR code
+        margin: 2   // Set margin around the QR code
+    }, function (error) {
+        if (error) {
+            console.error("Error generating QR Code: ", error);
+        } else {
+            console.log("QR Code generated successfully.");
+        }
+    });
+</script>

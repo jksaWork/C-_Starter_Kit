@@ -1,0 +1,29 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav flex-grow-1 align-items-end">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <!-- User is signed in -->
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout" asp-area="">Logout</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Profile">Pr</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="EnableAuthenticator">2FA</a>
+        </li>
+    }
+    else
+    {
+        <!-- User is not signed in -->
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+        </li>
+    }
+</ul>

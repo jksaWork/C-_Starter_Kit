@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<IdentityUser> SignInManager
+
+@{
+    ViewData["Title"] = "Manage Two-Factor Authentication";
+    var user = await UserManager.GetUserAsync(User);
+    var isTwoFactorEnabled = await UserManager.GetTwoFactorEnabledAsync(user);
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card">
+    <div class="card-body">
+        @if (isTwoFactorEnabled)
+        {
+            <p class="text-success">
+                Two-Factor Authentication is currently <strong>enabled</strong>.
+            </p>
+            <form asp-action="DisableTwoFactorAuthentication" method="post">
+                <button type="submit" class="btn btn-danger">Disable Two-Factor Authentication</button>
+            </form>
+        }
+        else
+        {
+            <p class="text-danger">
+                Two-Factor Authentication is currently <strong>disabled</strong>.
+            </p>
+            <a asp-action="EnableAuthenticator" class="btn btn-primary">Enable Two-Factor Authentication</a>
+        }
+    </div>
+</div>

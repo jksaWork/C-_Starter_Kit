@@ -1,0 +1,18 @@
+@model TowFactorAuthuntication
+
+<p>
+    please inter the code
+</p>
+<p>
+    @Model.Token
+</p>
+<form method="post">
+    <input type="hidden" asp-for="Token" />
+    <div class="form-group">
+        Enter Code :
+         <input type="text"
+        class="form-control" asp-for="Code" />
+</div>
+
+<button type="submit" class="btn btn-primary" >Add This Key</button>
+</form>
